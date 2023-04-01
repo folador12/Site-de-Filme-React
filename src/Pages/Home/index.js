@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../../Services/api";
- //movie/now_playing?api_key=0e3819ba64ac1208db654195862aaf03&language=pt-BR
+import { Link } from "react-router-dom";
+import './Home.css'
 
 function Home(){
     const [filmes,setFilmes] = useState([]);
@@ -12,7 +13,7 @@ function Home(){
                 params:{
                 api_key: "0e3819ba64ac1208db654195862aaf03",
                 language: "pt-BR",
-                page: 1
+                page: 2
                 }
             })
 
@@ -21,12 +22,15 @@ function Home(){
         loadfilmes();
     } ,[])
     return(
-        <div>
-             <div>
+        <div className="container">
+             <div className="lista-filme">
                 {filmes.map((value)=>{
                     return(
                         <article key={value.id}>
                             <strong>{value.title}</strong>
+                            <br/>
+                            <img src={`https://image.tmdb.org/t/p/original/${value.poster_path}`} alt={`Poster do filme ${value.title}`}/>
+                            <Link to={`/filme/${value.id}`}>Acessar Filme</Link>
                         </article>
                     )
                 })}
