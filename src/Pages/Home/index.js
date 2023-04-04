@@ -5,6 +5,8 @@ import './Home.css'
 
 function Home(){
     const [filmes,setFilmes] = useState([]);
+    const[loading,setLoading] = useState(true);
+
 
     useEffect( () =>{
 
@@ -13,14 +15,25 @@ function Home(){
                 params:{
                 api_key: "0e3819ba64ac1208db654195862aaf03",
                 language: "pt-BR",
-                page: 2
+                page: 1
                 }
             })
 
             setFilmes(response.data.results);
+            setLoading(false);
         }
         loadfilmes();
     } ,[])
+
+    if(loading)
+    {
+        return(
+            <div className="loading">
+                <h2>Carregando Filmes....</h2>
+            </div>
+        )
+    }
+    
     return(
         <div className="container">
              <div className="lista-filme">
@@ -35,8 +48,7 @@ function Home(){
                     )
                 })}
             </div>
-        </div>
-       
+        </div> 
     )
 }
 

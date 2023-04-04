@@ -10,6 +10,13 @@
     border-radius: 4px;
 }
 
+.loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 14px;
+}
+
 .lista-filme strong{
     margin-bottom: 15px;
     text-align: center;

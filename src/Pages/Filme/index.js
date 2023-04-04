@@ -4,7 +4,7 @@ function Filme(){
    return(
 
       <div>
-         <h1>Bem Vindo aos Meus Filmes Favoritos</h1>
+         <h1>Detalhes dos Filmes</h1>
       </div>
       
    ) 
