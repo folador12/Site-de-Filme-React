@@ -6,7 +6,7 @@ function Header(){
 
         <header>
 
-            <Link className='home' to='/'>Metflix</Link>
+            <Link className='home' to='/'>Meetflix</Link>
             <Link className='filme' to='/Filmes'>Meus Filmes</Link>
             
         </header>
