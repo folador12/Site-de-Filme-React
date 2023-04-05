@@ -43,7 +43,7 @@ function Home(){
                             <strong>{value.title}</strong>
                             <br/>
                             <img src={`https://image.tmdb.org/t/p/original/${value.poster_path}`} alt={`Poster do filme ${value.title}`}/>
-                            <Link to={`/filme/${value.id}`}>Acessar Filme</Link>
+                            <Link to={`/Filmes/${value.id}`}>Acessar Filme</Link>
                         </article>
                     )
                 })}

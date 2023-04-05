@@ -7,7 +7,7 @@ function Header(){
         <header>
 
             <Link className='home' to='/'>Meetflix</Link>
-            <Link className='filme' to='/Filmes'>Meus Filmes</Link>
+            <Link className='filme' to='/Favoritos'>Meus Filmes</Link>
             
         </header>
     )
