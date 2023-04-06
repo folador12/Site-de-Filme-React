@@ -1,11 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 import api from "../../Services/api";
 import './Filme.css'
 
 function Filme(){
    
-   const { id } = useParams();
+   const {id}  = useParams();
+   const navigate = useNavigate();
 
    const [filme, setFilme] = useState({});
    const[loading,setLoading] = useState(true);
@@ -22,13 +23,30 @@ function Filme(){
             setFilme(response.data);
             setLoading(false);
          })
-         .catch(()=>{
-            console.log("Filme não encontrado");
+         .catch(()=>{ 
+            navigate('/',{ replace: true } );
+            return;
          })
       }
 
       loadfilme();
-   }, [])
+   }, [navigate,id])
+
+   function salvarfilme(){
+      const minhalista = localStorage.getItem("@chave");
+
+      let filmessalvos = JSON.parse(minhalista) || [];
+
+      const existe = filmessalvos.some((filmesalvo) => filmesalvo.id === filme.id);
+
+      if(existe){
+         alert("Filme já está salvo");
+         return;
+      }
+      filmessalvos.push(filme);
+      localStorage.setItem("@chave", JSON.stringify(filmessalvos));
+      alert("Filme salvo com sucesso");
+   }
 
    if(loading)
    {
@@ -45,6 +63,21 @@ function Filme(){
       <div className="filme-info">
          <h1>{filme.title}</h1>
          <img src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.title} />
+
+         <h2>Sinopse</h2>
+         <span>{filme.overview}</span>
+
+         <strong>Avaliação: {filme.vote_average} / 10</strong>
+
+         <div className="botoes">
+            <button onClick={salvarfilme}>Salvar</button>
+            <button>
+               <a href= {`https://www.youtube.com/results?search_query=trailer ${filme.title} dublado pt-br` } target="_blank" rel="noreferrer" >
+                  Trailer
+               </a>
+            </button>
+
+         </div>
       </div>
       
    ) 

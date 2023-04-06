@@ -1,13 +1,10 @@
 .filme-info{
+    margin: 0 auto;
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
     max-width: 800px;
-    margin: 14px auto;
-}
-
-.filme-info div{
-    width: 100%;
-    background-color: #FFF;
-    padding: 15px;
-    border-radius: 4px;
+    padding: 0 8px;
 }
 
 .loading{
@@ -18,18 +15,59 @@
 }
 
 .filme-info h1{
-    margin-bottom: 15px;
+    margin: 14px 0;
     text-align: center;
-    font-size: 22px;
-    display: block;
+    font-size: 30px;
+}
+
+.filme-info h2{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+
+.filme-info span{
+    margin-bottom: 10px;
+    font-size: 15px;
+    text-align: justify;
+}
+
+.filme-info strong{
+    font-size: 20px;
 }
 
 .filme-info img{
-    width: 900px;
+    width: 800px;
     max-width: 100%;
     max-height: 340px;
     object-fit: cover;
     display: block;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
+    border-radius: 8px;
+}
+.botoes button{
+    margin-right: 12px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    margin-left: 0;
+    font-size: 20px;
+    border: 0;
+    outline: none;
+    padding: 12px;
+    border-radius:4px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.botoes a{
+    text-decoration: none;
+    color: #000;
+    transition: all 0.5s;
+}
+
+.botoes button:hover{
+    background-color: brown;
+    color: #FFF;
+}
+
+.botoes a:hover{
+    color: #FFF;
 }
