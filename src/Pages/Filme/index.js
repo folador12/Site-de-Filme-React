@@ -1,5 +1,6 @@
 import { useParams, useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import api from "../../Services/api";
 import './Filme.css'
 
@@ -40,12 +41,12 @@ function Filme(){
       const existe = filmessalvos.some((filmesalvo) => filmesalvo.id === filme.id);
 
       if(existe){
-         alert("Filme já está salvo");
+         toast.warn("Filme já está salvo")
          return;
       }
       filmessalvos.push(filme);
       localStorage.setItem("@chave", JSON.stringify(filmessalvos));
-      alert("Filme salvo com sucesso");
+      toast.success("Filme salvo com sucesso")
    }
 
    if(loading)
