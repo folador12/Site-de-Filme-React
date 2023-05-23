@@ -6,6 +6,7 @@ import './Home.css'
 function Home(){
     const [filmes,setFilmes] = useState([]);
     const[loading,setLoading] = useState(true);
+    const[busca,setBusca]= useState([]);
 
 
     useEffect( () =>{
@@ -20,9 +21,12 @@ function Home(){
             })
 
             setFilmes(response.data.results);
+            setBusca(response.data.results);
             setLoading(false);
         }
         loadfilmes();
+
+        
     } ,[])
 
     if(loading)
@@ -33,11 +37,25 @@ function Home(){
             </div>
         )
     }
+
+    const handleChange = ({target}) => {
+        if(!target.value){
+            setBusca(filmes);
+            return;
+        }
+
+        const filter = busca.filter((b) => (b.title.includes(target.value)));
+
+        setBusca(filter);
+    }
     
     return(
         <div className="container">
+            <div className="pesquisa">
+            <input type="text" placeholder="Digite o nome do Filme" onChange={handleChange}/>
+            </div>
              <div className="lista-filme">
-                {filmes.map((value)=>{
+                {busca.map((value)=>{
                     return(
                         <article key={value.id}>
                             <strong>{value.title}</strong>
